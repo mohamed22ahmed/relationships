@@ -8,14 +8,16 @@ use Illuminate\Http\Request;
 
 class AddressController extends Controller
 {
-    public function getAddresses(){
+    public function getAddress(){
         // this will make a query every loop on addresses record
         return Address::all();
 
         // to make 2 queries only we should use with method
         return Address::with('user')->get();
+    }
 
-
+    public function getAllAddresses(){
+        return User::with('addresses')->get();
     }
 
     public function createAddress()

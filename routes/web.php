@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddressController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,5 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// one to one relationship
-// Route::get('/create-user', [])
+Route::get('addresses', [AddressController::class, 'getAddress']);

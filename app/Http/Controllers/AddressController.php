@@ -10,10 +10,13 @@ class AddressController extends Controller
 {
     public function getAddress(){
         // this will make a query every loop on addresses record
-        return Address::all();
+        // return Address::all();
 
         // to make 2 queries only we should use with method
-        return Address::with('user')->get();
+        // Address::with('user')->get();
+
+        $users = User::with('address')->get();
+        return view('address', compact('users'));
     }
 
     public function getAllAddresses(){

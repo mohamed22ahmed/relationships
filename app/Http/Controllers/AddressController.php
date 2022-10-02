@@ -15,7 +15,11 @@ class AddressController extends Controller
         // to make 2 queries only we should use with method
         // Address::with('user')->get();
 
-        $users = User::with('address')->get();
+        // here has gets the users who has address only
+        // $users = User::has('address')->with('address')->get();
+
+        // here has gets the users who has address more than 2 addresses
+        $users = User::has('address', '>=', 2)->with('address')->get();
         return view('address', compact('users'));
     }
 

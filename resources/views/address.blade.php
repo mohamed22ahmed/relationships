@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    {{ dd($users) }}
     @foreach ($users as $user)
         <h2>{{ $user->name }}</h2>
         {{-- to avoid nallable data, we can use optional helper function --}}

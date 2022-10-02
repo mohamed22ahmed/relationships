@@ -19,7 +19,12 @@ class AddressController extends Controller
         // $users = User::has('address')->with('address')->get();
 
         // here has gets the users who has address more than 2 addresses
-        $users = User::has('address', '>=', 2)->with('address')->get();
+        // $users = User::has('address', '>=', 2)->with('address')->get();
+
+        $users = User::whereHas('address', function($query){
+            $query->where('country', 'like', '%Egy%');
+        })->with('address')->get();
+
         return view('address', compact('users'));
     }
 
